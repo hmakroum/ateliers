@@ -1,0 +1,34 @@
+server:
+  port: 8877
+spring:
+  application:
+    name: Config Server
+  profiles:
+    active: git, vault
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/hmakroum/config #The latter can be used with protocols like http, ssh, or a simple file on a local
+          clone-on-start: true
+          username: hmakroum
+          password: ${GIT_TOKEN}
+          default-label: dev
+          order: 1
+        vault:
+          host: 127.0.0.1
+          port: 8200
+          authentication: token
+          token: ${VAULT_TOKEN}
+          kv-version: 2
+          order: 2
+        bootstrap: on
+  security:
+    user:
+      name: root
+      password: s3cr3t
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

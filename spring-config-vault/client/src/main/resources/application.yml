@@ -1,0 +1,14 @@
+server:
+  port: 9977
+spring:
+  application:
+    name: config-client
+  profiles:
+    active: production
+  config:
+    import: 'optional:configserver:http://root:s3cr3t@localhost:8877/'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
