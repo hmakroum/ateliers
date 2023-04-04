@@ -11,17 +11,16 @@ spring:
         git:
           uri: https://github.com/hmakroum/config #The latter can be used with protocols like http, ssh, or a simple file on a local
           clone-on-start: true
-          username: hmakroum
-          password: ${GIT_TOKEN}
           default-label: dev
-          order: 1
+          order: 2
         vault:
           host: 127.0.0.1
           port: 8200
           authentication: token
-          token: ${VAULT_TOKEN}
+          token: hvs.UvUqRUjC1AhUdFVAxGx8m6Ep
           kv-version: 2
-          order: 2
+          order: 1
+          profile-separator: '/'
         bootstrap: on
   security:
     user:
